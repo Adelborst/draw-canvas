@@ -7,27 +7,27 @@ define('BASEPATH', __DIR__);
 error_reporting(0);
 
 // Подключаем контроллер
-require 'app/controller.php';
+require 'app/controllers/draw.php';
 
-// Инициализируем класс контроллера
-$controller = new Controller();
+// Инициализируем класс
+$draw = new Draw();
 
 // GET-роутинг назначает методы контроллера 
 switch ($_GET['action']) {
 	case 'create':
-		$controller->img_edit();
+		$draw->img_edit();
 		break;
 	case 'edit':
-		$controller->img_edit($_GET['id']);
+		$draw->img_edit($_GET['id']);
 		break;
 	case 'insert':
-		$controller->ajax_insert();
+		$draw->ajax_insert();
 		break;
 	case 'update':
-		$controller->ajax_update();
+		$draw->ajax_update();
 		break;
 	default:
-		$controller->img_list();
+		$draw->img_list();
 }
 
 ?>

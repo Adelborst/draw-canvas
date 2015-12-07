@@ -2,13 +2,13 @@
 
 if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Model 
+class Draw_Model 
 {
 	private $pdo;
 
 	public function __construct()
 	{
-		require 'config/database.php';
+		require BASEPATH.'/app/config/database.php';
 		$this->pdo = new PDO($db['dsn'], $db['user'], $db['password'], $db['opt']);
 	}
 

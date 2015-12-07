@@ -2,15 +2,15 @@
 
 if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Controller 
+class Draw 
 {
 	private $model; // Переменная для объекта модели
 	private $data;  // Переменная для массива данных
 
 	public function __construct()
 	{
-		require 'model.php';
-		$this->model = new Model();
+		require BASEPATH.'/app/models/draw_model.php';
+		$this->model = new Draw_Model();
 	}
 
 	public function img_list()
@@ -68,7 +68,7 @@ class Controller
 	private function render($view)
 	{
 		$data = $this->data;
-		require 'views/'.$view.'.php';
+		require BASEPATH.'/app/views/'.$view.'.php';
 	}
 }
 
