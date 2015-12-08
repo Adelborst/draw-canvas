@@ -6,13 +6,13 @@ define('BASEPATH', __DIR__);
 
 error_reporting(0);
 
-// Подключаем контроллер
-require 'app/controllers/draw.php';
+// Подключаем контроллер проекта
+require BASEPATH.'/app/controllers/draw.php';
 
-// Инициализируем класс
+// Инициализируем класс проекта
 $draw = new Draw();
 
-// GET-роутинг назначает методы контроллера 
+// Назначаем методы обработки запросов
 switch ($_GET['action']) {
 	case 'create':
 		$draw->img_edit();

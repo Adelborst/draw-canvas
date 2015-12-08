@@ -4,8 +4,8 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Draw 
 {
-	private $model; // Переменная для объекта модели
-	private $data;  // Переменная для массива данных
+	private $model;
+	private $data;
 
 	public function __construct()
 	{
