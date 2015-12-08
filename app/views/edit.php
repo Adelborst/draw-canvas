@@ -12,8 +12,10 @@
 				<button id="black-color" class="btn btn-default btn-xs active">Черный цвет</button>
 			</div>
 			<div class="form-group">
+				<? if (!$data['img']) : ?>
 				<label for="password">Укажите пароль для доступа к рисунку</label>
 				<input type="password" name="password" id="password" class="form-control">
+				<? endif ?> 
 			</div>
 			<button class="btn btn-success" id="save_canvas">Сохранить</button>   
 			<? if ($data['img']) : ?>

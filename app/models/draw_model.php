@@ -40,21 +40,11 @@ class Draw_Model
 
 	public function update() 
 	{
-		if ($_POST['password'] === '') {
-			$q="UPDATE `img` SET `data_uri` = :image WHERE `id` = :id";
-			$param = array(
-				':image' => $_POST["image"],
-				':id' => $_POST["id"]
-			);
-		} else {
-			$q="UPDATE `img` SET `data_uri` = :image, `password` = :password WHERE `id` = :id";
-			$hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-			$param = array(
-				':image' => $_POST["image"],
-				':id' => $_POST["id"],
-				':password' => $hash
-			);
-		}
+		$q="UPDATE `img` SET `data_uri` = :image WHERE `id` = :id";
+		$param = array(
+			':image' => $_POST["image"],
+			':id' => $_POST["id"]
+		);
 
 		$query = $this->pdo->prepare($q);
 		$query->execute($param);
