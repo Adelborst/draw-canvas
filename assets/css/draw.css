@@ -1,0 +1,25 @@
+body {
+padding-bottom: 30px;
+}
+
+.center-canvas {
+width: 500px;
+margin-left: auto;
+margin-right: auto;
+}
+
+canvas {
+border: 1px dashed #bbb;
+}
+
+.tools-row {
+width: 500px;
+}
+
+.form-group {
+margin-top: 35px;
+}
+
+.img-thumbnail {
+margin-bottom: 20px;
+}

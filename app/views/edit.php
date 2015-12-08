@@ -25,7 +25,7 @@
 	</div>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="js/draw.js"></script>
+<script src="assets/js/draw.js"></script>
 
 <? $content = ob_get_clean() ?>
 

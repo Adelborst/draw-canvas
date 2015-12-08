@@ -8,7 +8,7 @@ class Draw_Model
 
 	public function __construct()
 	{
-		require BASEPATH.'/app/config/database.php';
+		require_once BASEPATH.'/app/config/database.php';
 		$this->pdo = new PDO($db['dsn'], $db['user'], $db['password'], $db['opt']);
 	}
 

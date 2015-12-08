@@ -2,12 +2,12 @@
 
 // PHP 5.5.10
 
-define('BASEPATH', __DIR__);
-
 error_reporting(0);
 
+define('BASEPATH', __DIR__);
+
 // Подключаем контроллер проекта
-require BASEPATH.'/app/controllers/draw.php';
+require_once BASEPATH.'/app/controllers/draw.php';
 
 // Инициализируем класс проекта
 $draw = new Draw();

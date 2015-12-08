@@ -9,35 +9,7 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<style>
-			
-			body {
-				padding-bottom: 30px;
-			}
-
-			.center-canvas {
-				width: 500px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-
-			canvas {
-				border: 1px dashed #bbb;
-			}
-
-			.tools-row {
-				width: 500px;
-			}
-
-			.form-group {
-				margin-top: 35px;
-			}
-			
-			.img-thumbnail {
-				margin-bottom: 20px;
-			}
-			
-		</style>
+		<link rel="stylesheet" href="assets/css/draw.css">
 	</head>
 	<body>
 		<nav class="navbar navbar-default">

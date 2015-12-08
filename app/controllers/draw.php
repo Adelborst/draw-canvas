@@ -5,11 +5,11 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 class Draw 
 {
 	private $model;
-	private $data;
+	private $data = array();
 
 	public function __construct()
 	{
-		require BASEPATH.'/app/models/draw_model.php';
+		require_once BASEPATH.'/app/models/draw_model.php';
 		$this->model = new Draw_Model();
 	}
 
