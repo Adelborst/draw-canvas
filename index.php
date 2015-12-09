@@ -7,27 +7,30 @@ error_reporting(0);
 define('BASEPATH', __DIR__);
 
 // Подключаем контроллер проекта
-require_once BASEPATH.'/app/controllers/draw.php';
+require_once BASEPATH.'/app/draw.php';
 
 // Инициализируем класс проекта
 $draw = new Draw();
 
 // Назначаем методы обработки запросов
+// Надо сделать класс роутинга
 switch ($_GET['action']) {
 	case 'create':
-		$draw->img_edit();
+		$draw->imgEdit();
 		break;
 	case 'edit':
-		$draw->img_edit($_GET['id']);
+		$draw->imgEdit($_GET['id']);
 		break;
 	case 'insert':
-		$draw->ajax_insert();
+		$draw->ajaxInsert();
 		break;
 	case 'update':
-		$draw->ajax_update();
+		$draw->ajaxUpdate();
 		break;
 	default:
-		$draw->img_list();
+		$draw->imgList();
 }
+
+// $draw->run();
 
 ?>
