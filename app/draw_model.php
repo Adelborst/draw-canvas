@@ -67,7 +67,7 @@ class Draw_Model {
 
 	public function getOne($id) 
 	{
-		$q = $this->db->prepare('SELECT * FROM img WHERE id = ?');
+		$q = $this->db->prepare('SELECT id, data_uri FROM img WHERE id = ?');
 		$q->execute([$id]);
 		$data = $q->fetch();
 
