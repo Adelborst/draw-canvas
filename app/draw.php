@@ -19,9 +19,11 @@ class Draw
 		$this->render('list');
 	}
 
-	public function imgEdit($id = false) 
+	public function imgEdit() 
 	{
-		// Если не проходим проверку пароля - к редактированию не пускаем
+		$id = $_GET['id'];
+		
+		// Если не проходим проверку пароля
 		if ($id && !$this->model->checkPassword($id))
 		{
 			if (isset($_POST['password'])) $this->data['warning'][] = 'Неправильный пароль! Попробуйте еще раз, пожалуйста. ';

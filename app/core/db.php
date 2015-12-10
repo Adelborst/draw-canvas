@@ -2,7 +2,10 @@
 
 if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-// Синглтон подключения к БД
+/*
+* Класс подключения к БД
+*/
+
 class DB
 {
 	private static $db;
@@ -11,7 +14,7 @@ class DB
 
 	private function __clone() {}
 
-	public function getInstance() 
+	public static function getInstance() 
 	{
 		if (!isset(self::$db))
 		{

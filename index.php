@@ -6,31 +6,24 @@ error_reporting(0);
 
 define('BASEPATH', __DIR__);
 
+// Подключаем роутер
+require_once BASEPATH.'/app/core/router.php';
+
 // Подключаем контроллер проекта
 require_once BASEPATH.'/app/draw.php';
 
-// Инициализируем класс проекта
+// Инициализируем класс проекта (контроллер)
 $draw = new Draw();
 
-// Назначаем методы обработки запросов
-// Надо сделать класс роутинга
-switch ($_GET['action']) {
-	case 'create':
-		$draw->imgEdit();
-		break;
-	case 'edit':
-		$draw->imgEdit($_GET['id']);
-		break;
-	case 'insert':
-		$draw->ajaxInsert();
-		break;
-	case 'update':
-		$draw->ajaxUpdate();
-		break;
-	default:
-		$draw->imgList();
-}
+// Назначаем роуты приложения
+Router::route('', array($draw, 'imgList'));
+Router::route('list', array($draw, 'imgList'));
+Router::route('edit', array($draw, 'imgEdit'));
+Router::route('create', array($draw, 'imgEdit'));
+Router::route('insert', array($draw, 'ajaxInsert'));
+Router::route('update', array($draw, 'ajaxUpdate'));
 
-// $draw->run();
+// Запускаем роутер
+Router::execute($_GET['action']);
 
 ?>
