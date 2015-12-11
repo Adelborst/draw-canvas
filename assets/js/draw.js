@@ -3,12 +3,15 @@ $(document).ready(function() {
 	if ($('#canvasCreate')[0]) {
 		context = $('#canvasCreate')[0].getContext("2d");
 		var img = new Image();
-		if ($('#canvas-data')[0])
+		if ($('#canvas-data').attr('data-id'))
 		{
-			var imgData = $('#canvas-data').html();
-			img.src = imgData;
+			var imgData = $('#canvas-data').attr('data-name');
+			img.src = 'img/' + imgData + '.png';
+			console.log(img.src);
+			img.onload = function () {
+		   		context.drawImage(img,0,0);
+			};
 		}
-		context.drawImage(img, 0, 0);
 	}
 
 	$('#canvasCreate').mousedown(function(e) {
@@ -81,9 +84,11 @@ $(document).ready(function() {
 		var dataUrl = canvas.toDataURL();
 		var password = $('#password').val();
 		var id;
+		var name;
 		var url = '?action=insert';
 		if ($('#canvas-data').attr("data-id")) {
 			id = $('#canvas-data').attr("data-id");
+			name = $('#canvas-data').attr("data-name");
 			url = '?action=update';
 		} 
 		$.ajax({
@@ -92,7 +97,8 @@ $(document).ready(function() {
 			data: {
 				image: dataUrl,
 				password: password,
-				id: id
+				id: id,
+				name: name
 			}
 		})
 			.success(function(respond) {

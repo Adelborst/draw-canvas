@@ -44,7 +44,7 @@ class Draw
 	public function ajaxUpdate()
 	{
 		if (isset($_POST["image"]))
-			$this->model->update();
+			$this->model->saveImgFile();
 	}
 	
 	private function render($view)

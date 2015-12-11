@@ -20,10 +20,11 @@ class Draw_Model {
 			$hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 		}
 
-		$q = "INSERT INTO img(data_uri, password) values(:image, :password)";
+		$this->saveImgFile($name =  'img_' . time());
 
+		$q = "INSERT INTO img(name, password) values(:name, :password)";
 		$param = array(
-			':image' => $_POST["image"],
+			':name' => $name,
 			':password' => $hash
 		);
 
@@ -37,23 +38,19 @@ class Draw_Model {
 			return false;
 	}
 
-	public function update() 
+	public function saveImgFile($name = null)
 	{
-		$q = "UPDATE `img` SET `data_uri` = :image WHERE `id` = :id";
-		$param = array(
-			':image' => $_POST["image"],
-			':id' => $_POST["id"]
-		);
-
-		$query = $this->db->prepare($q);
-		$query->execute($param);
-		$affected_rows = $query->rowCount();
-
-		if ($affected_rows)
-			return true;
-		else
-			return false;
+		if (isset($_POST['name'])) {
+			$name =  $_POST['name'];
+		}
+		$img = $_POST['image'];
+		$img = str_replace('data:image/png;base64,', '', $img);
+		$img = str_replace(' ', '+', $img);
+		$data = base64_decode($img);
+		$file = 'img/' . $name . ".png";
+		file_put_contents($file, $data);
 	}
+
 
 	public function getAll()
 	{
@@ -67,7 +64,7 @@ class Draw_Model {
 
 	public function getOne($id) 
 	{
-		$q = $this->db->prepare('SELECT id, data_uri FROM img WHERE id = ?');
+		$q = $this->db->prepare('SELECT id, name FROM img WHERE id = ?');
 		$q->execute([$id]);
 		$data = $q->fetch();
 

@@ -19,8 +19,8 @@
 			</div>
 			<button class="btn btn-success" id="save_canvas">Сохранить</button>   
 			<? if ($data['img']) : ?>
-				<div id="canvas-data" data-id="<?= $data['img']['id']?>" style="display:none">
-					<?= $data['img']['data_uri']?>
+				<div id="canvas-data" data-id="<?= $data['img']['id']?>" 
+					data-name="<?= $data['img']['name']?>" style="display:none">
 				</div>   
 			<? endif ?>             
 		</div>

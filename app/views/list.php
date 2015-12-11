@@ -5,7 +5,9 @@
 <div class="container">
 	<div class="row">
 		<? foreach ($data['images'] as $image): ?>
-		<div class="col-md-4"><a href="?action=edit&id=<?= $image['id']?>"><img src="<?= $image['data_uri']?>" alt="" class="img-thumbnail"></a></div>
+		<div class="col-md-4"><a href="?action=edit&id=<?= $image['id']?>">
+			<img src="img/<?= $image['name']?>.png" alt="" class="img-thumbnail">
+		</a></div>
 		<? endforeach; ?>
 	</div>
 </div>
