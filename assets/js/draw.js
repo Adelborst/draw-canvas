@@ -6,7 +6,7 @@ $(document).ready(function() {
 		if ($('#canvas-data').attr('data-id'))
 		{
 			var imgData = $('#canvas-data').attr('data-name');
-			img.src = 'img/' + imgData + '.png';
+			img.src = 'storage/' + imgData + '.png';
 			console.log(img.src);
 			img.onload = function () {
 		   		context.drawImage(img,0,0);
