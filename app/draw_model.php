@@ -5,10 +5,12 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 class Draw_Model {
 	
 	private $db;
+	private $upload_dir;
 
 	public function __construct() {
 		require_once BASEPATH.'/app/core/db.php';
 		$this->db = Db::getInstance();
+		$this->upload_dir = BASEPATH . '/storage' . '/';
 	} 
 
 	public function insert() 
@@ -47,7 +49,7 @@ class Draw_Model {
 		$img = str_replace('data:image/png;base64,', '', $img);
 		$img = str_replace(' ', '+', $img);
 		$data = base64_decode($img);
-		$file = 'storage/' . $name . ".png";
+		$file = $this->upload_dir . $name . ".png";
 		file_put_contents($file, $data);
 	}
 
