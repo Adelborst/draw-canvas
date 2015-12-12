@@ -18,7 +18,7 @@ class Router {
 		self::$routes[$pattern] = $callback;
 	}
 
-	public static function execute(&$app, $action) {
+	public static function execute($app, $action) {
 		foreach (self::$routes as $pattern => $callback) {
 			if (preg_match($pattern, $action, $params)) {
 				array_shift($params);
