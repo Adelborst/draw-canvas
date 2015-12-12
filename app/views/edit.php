@@ -8,7 +8,7 @@
 			<div class="alert"></div>
 			<canvas id="canvasCreate" width="500" height="500"></canvas> 
 			<div class="tools-row">
-				<button id="clear_part" class="btn btn-default btn-xs">Ластик</button>
+				<button id="clear_part" class="btn btn-default btn-xs">Белый цвет</button>
 				<button id="black-color" class="btn btn-default btn-xs active">Черный цвет</button>
 			</div>
 			<div class="form-group">

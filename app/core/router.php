@@ -18,11 +18,12 @@ class Router {
 		self::$routes[$pattern] = $callback;
 	}
 
-	public static function execute($url) {
+	public static function execute(&$app, $action) {
 		foreach (self::$routes as $pattern => $callback) {
-			if (preg_match($pattern, $url, $params)) {
+			if (preg_match($pattern, $action, $params)) {
 				array_shift($params);
-				return call_user_func_array($callback, array_values($params));
+				
+				return call_user_func_array(array($app, $callback), array_values($params));
 			}
 		}
 		self::error404();

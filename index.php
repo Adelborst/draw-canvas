@@ -6,7 +6,9 @@ error_reporting(0);
 
 define('BASEPATH', __DIR__);
 
-// Подключаем роутер
+// Подключаем роутер, он будет обрабатывать запросы, 
+// назначать им методы приложения или отображать страницу 
+// 404 для некооректных запросов
 require_once BASEPATH.'/app/core/router.php';
 
 // Подключаем контроллер проекта
@@ -16,14 +18,14 @@ require_once BASEPATH.'/app/draw.php';
 $draw = new Draw();
 
 // Назначаем роуты приложения
-Router::route('', array($draw, 'imgList'));
-Router::route('list', array($draw, 'imgList'));
-Router::route('edit', array($draw, 'imgEdit'));
-Router::route('create', array($draw, 'imgEdit'));
-Router::route('insert', array($draw, 'ajaxInsert'));
-Router::route('update', array($draw, 'ajaxUpdate'));
+Router::route('', 'imgList');
+Router::route('list', 'imgList');
+Router::route('edit', 'imgEdit');
+Router::route('create', 'imgEdit');
+Router::route('insert', 'ajaxInsert');
+Router::route('update', 'ajaxUpdate');
 
-// Запускаем роутер
-Router::execute($_GET['action']);
+// Запускаем роутер для нашего приложения
+Router::execute($draw, $_GET['action']);
 
 ?>
