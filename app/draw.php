@@ -32,7 +32,7 @@ class Draw
 		}
 
 		if (isset($_POST['password'])) {
-			$this->data['protection'] = md5($id);
+			$this->data['protection'] = md5($id . md5('data-canvas-protection'));
 		}
 		
 		$this->data['img'] = $this->model->getOne($id);
@@ -50,7 +50,7 @@ class Draw
 		if (! isset($_POST["protection"])) {
 			$this->model->saveImgFile();
 			echo 'Рисунок успешно обновлен';
-		} elseif (isset($_POST["protection"]) && $_POST["protection"] == md5($_POST["id"])) {
+		} elseif (isset($_POST["protection"]) && $_POST["protection"] == md5($_POST["id"] . md5('data-canvas-protection'))) {
 			$this->model->saveImgFile();
 			echo 'Рисунок успешно обновлен';
 		} else {
