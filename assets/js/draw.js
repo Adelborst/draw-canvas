@@ -85,12 +85,18 @@ $(document).ready(function() {
 		var password = $('#password').val();
 		var id;
 		var name;
+		var protection;
 		var url = '?action=insert';
 		if ($('#canvas-data').attr("data-id")) {
 			id = $('#canvas-data').attr("data-id");
 			name = $('#canvas-data').attr("data-name");
 			url = '?action=update';
 		} 
+		if ($('#protection').attr('data-protection')) {
+			protection = $('#protection').attr('data-protection');
+			// protection = 123;
+			console.log(protection);
+		}
 		$.ajax({
 			type: "POST",
 			url: url,
@@ -98,11 +104,12 @@ $(document).ready(function() {
 				image: dataUrl,
 				password: password,
 				id: id,
-				name: name
+				name: name,
+				protection: protection
 			}
 		})
 			.success(function(respond) {
-			$('.alert').addClass('alert-success').html('Рисунок успешно сохранен');
+			$('.alert').addClass('alert-success').html(respond);
 		})
 			.fail(function(respond) {
 			$('.alert').addClass('alert-danger').html('Операция не удалась');

@@ -30,6 +30,10 @@ class Draw
 			$this->render('check_password');
 			exit;
 		}
+
+		if (isset($_POST['password'])) {
+			$this->data['protection'] = md5($id);
+		}
 		
 		$this->data['img'] = $this->model->getOne($id);
 		$this->render('edit');
@@ -43,8 +47,15 @@ class Draw
 	
 	public function ajaxUpdate()
 	{
-		if (isset($_POST["image"]))
+		if (! isset($_POST["protection"])) {
 			$this->model->saveImgFile();
+			echo 'Рисунок успешно обновлен';
+		} elseif (isset($_POST["protection"]) && $_POST["protection"] == md5($_POST["id"])) {
+			$this->model->saveImgFile();
+			echo 'Рисунок успешно обновлен';
+		} else {
+			exit('Ошибка сохранения');
+		}
 	}
 	
 	private function render($view)

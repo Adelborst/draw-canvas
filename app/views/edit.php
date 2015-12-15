@@ -22,7 +22,10 @@
 				<div id="canvas-data" data-id="<?= $data['img']['id']?>" 
 					data-name="<?= $data['img']['name']?>" style="display:none">
 				</div>   
-			<? endif ?>             
+			<? endif ?>      
+			<? if ($data['protection']) : ?>
+				<div id="protection" data-protection="<?= $data['protection']?>"></div>   
+			<? endif ?>                 
 		</div>
 	</div>
 </div>
