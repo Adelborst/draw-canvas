@@ -42,7 +42,11 @@ class Draw
 	public function ajaxInsert()
 	{
 		if (isset($_POST["image"]))
-			$this->model->insert();
+			if ($this->model->insert()) {
+				echo 'Рисунок успешно сохранен';
+			} else {
+				echo 'Ошибка сохранения';
+			}
  	}
 	
 	public function ajaxUpdate()
